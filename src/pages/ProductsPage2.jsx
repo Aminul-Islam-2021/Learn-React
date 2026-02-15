@@ -32,18 +32,18 @@
 
 // const ProductsPage2 = () => {
 //   const dispatch = useDispatch();
-  
+
 //   // Get current filters from Redux
 //   const filters = useSelector(selectCurrentFilters);
 //   const viewMode = useSelector(selectViewMode);
 //   const hasActiveFilters = useSelector(selectHasActiveFilters);
-  
+
 //   // Debounce price range to avoid too many API calls
 //   const debouncedPrice = useDebounce(filters.priceRange.current, 500);
-  
+
 //   // RTK Query hooks
-//   const { 
-//     data: productsData, 
+//   const {
+//     data: productsData,
 //     isLoading: productsLoading,
 //     error: productsError,
 //     refetch: refetchProducts,
@@ -56,17 +56,17 @@
 //     limit: filters.pagination.limit,
 //   });
 
-//   const { 
-//     data: categories, 
-//     isLoading: categoriesLoading 
+//   const {
+//     data: categories,
+//     isLoading: categoriesLoading
 //   } = useGetCategoriesQuery();
 
-//   const { 
+//   const {
 //     data: priceRange,
 //     isLoading: priceRangeLoading,
 //   } = useGetPriceRangeQuery(filters.category);
 
-//   const { 
+//   const {
 //     data: ratingRange,
 //     isLoading: ratingRangeLoading,
 //   } = useGetRatingRangeQuery(filters.category);
@@ -116,7 +116,7 @@
 //         </h1>
 //         <div className="flex items-center gap-4">
 //           <ViewModeToggle />
-//           <ProductSort 
+//           <ProductSort
 //             currentSort={filters.sortBy}
 //             onSortChange={(sort) => dispatch(setSortBy(sort))}
 //           />
@@ -125,7 +125,7 @@
 
 //       {/* Active Filters */}
 //       {hasActiveFilters && (
-//         <ActiveFilters 
+//         <ActiveFilters
 //           filters={filters}
 //           onReset={handleResetFilters}
 //         />
@@ -153,13 +153,13 @@
 //           {productsData?.products?.length > 0 ? (
 //             <>
 //               <div className={`grid gap-6 ${
-//                 viewMode === 'grid' 
-//                   ? 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4' 
+//                 viewMode === 'grid'
+//                   ? 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
 //                   : 'grid-cols-1'
 //               }`}>
 //                 {productsData.products.map((product) => (
-//                   <ProductCard 
-//                     key={product.id} 
+//                   <ProductCard
+//                     key={product.id}
 //                     product={product}
 //                     viewMode={viewMode}
 //                   />
@@ -198,14 +198,13 @@
 
 // export default ProductsPage2;
 
-
-
-import React from 'react'
+import React from "react";
+import { useGetProductsQuery } from "../store2/features2/products2/productsApi2";
 
 const ProductsPage2 = () => {
-  return (
-    <div>ProductsPage2</div>
-  )
-}
+  const { data, error, isLoading } = useGetProductsQuery();
+  console.log(data);
+  return <div>ProductsPage2</div>;
+};
 
-export default ProductsPage2
+export default ProductsPage2;
